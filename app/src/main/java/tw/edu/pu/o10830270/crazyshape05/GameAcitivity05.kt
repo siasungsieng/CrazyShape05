@@ -18,7 +18,7 @@ class GameAcitivity05 : AppCompatActivity() {
 
         btnBack.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                finish()
+                GenerateQuestion()
             }
         })
 //。。。
@@ -29,7 +29,7 @@ class GameAcitivity05 : AppCompatActivity() {
             }
         })
 ////
-        handv.setOnTouchListener(object: View.OnTouchListener{
+        handv.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, event: MotionEvent): Boolean {
                 var xPos = event.getX()
                 var yPos = event.getY()
@@ -37,9 +37,11 @@ class GameAcitivity05 : AppCompatActivity() {
                     MotionEvent.ACTION_DOWN -> handv.path.moveTo(xPos, yPos)
                     MotionEvent.ACTION_MOVE -> handv.path.lineTo(xPos, yPos)
                     MotionEvent.ACTION_UP -> {
-                        //將handv轉成Bitmap
-                        val b = Bitmap.createBitmap(handv.measuredWidth, handv.measuredHeight,
-                            Bitmap.Config.ARGB_8888)
+
+                        val b = Bitmap.createBitmap(
+                            handv.measuredWidth, handv.measuredHeight,
+                            Bitmap.Config.ARGB_8888
+                        )
                         val c = Canvas(b)
                         handv.draw(c)
                         classifyDrawing(b)
@@ -49,6 +51,10 @@ class GameAcitivity05 : AppCompatActivity() {
                 return true
             }
         })
+
+    }
+    fun GenerateQuestion(){
+
     }
 
 
